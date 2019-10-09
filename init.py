@@ -14,7 +14,7 @@ driver.get('https://web.whatsapp.com/')
 
 name = 'Sirius'
 phase = 'Sirius'
-input('Enter anything after scanning QR code')
+input('Scan QR code and press y once the screen has stopped loading: ')
 time.sleep(5)
 
 search = driver.find_element_by_class_name('_2zCfw')
