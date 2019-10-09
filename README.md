@@ -33,5 +33,5 @@ Rename the bot
 Usage: Sirius disapparate <new name>
 
 #### 7. mode / snape
-Change the mode from scanning outgoing to incoming messages
+Change the mode from scanning outgoing to incoming messages  
 Usage: Sirius snape <name> in/out
