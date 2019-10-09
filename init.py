@@ -77,7 +77,9 @@ def execute(cmd):
     elif cmd[0] == 'change' or cmd[0] == 'apparate':
         target = True
         if(len(cmd)>1):
-            focus(cmd[1])
+            name = cmd[1]
+            focus(name)
+            msg_box.send_keys("Things just got a hell lot more interesting... "+Keys.RETURN)
         else:
             msg_box.send_keys("Couldn't Apparate, Focus harder"+Keys.RETURN)
             
@@ -90,11 +92,14 @@ def execute(cmd):
     elif cmd[0] == 'mode' or cmd[0] == 'snape':
         target = True
         if(len(cmd)>2):
-            focus(cmd[1])
+            name = cmd[1]
+            focus(name)
             if(cmd[2] == 'in'):
                 mode = 'message-in'
             else:
                 mode = 'message-out'
+            msg_box.send_keys("Things just got a hell lot more interesting... "+Keys.RETURN)
+            
         else:
             msg_box.send_keys("Couldn't Disapparate, Focus harder"+Keys.RETURN)
             
