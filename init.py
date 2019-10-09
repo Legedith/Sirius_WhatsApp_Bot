@@ -32,8 +32,7 @@ def main():
     lold = len(cmnd)
     while True:
         cmnd = driver.find_elements_by_class_name(mode)
-        if target == True and lnew != lold:
-            print(cmnd)
+        if target == True:
             lold = len(cmnd)
             print(lold)
             clean = decoded(cmnd[-1])
