@@ -34,9 +34,7 @@ def main():
         cmnd = driver.find_elements_by_class_name(mode)
         if target == True:
             lold = len(cmnd)
-            print(lold)
             clean = decoded(cmnd[-1])
-            print(clean)
             if clean[0].lower() != phase.lower():
                     continue
             execute(clean[1:-2])
@@ -152,6 +150,10 @@ def focus(name):
     msg_box = driver.find_element_by_class_name('_3u328')
 
 if __name__ == "__main__":
-    main()
+    while True:
+        try:
+            main()
+        except:
+            print('got an error here!')
         
         
