@@ -32,12 +32,15 @@ def main():
     lold = len(cmnd)
     while True:
         cmnd = driver.find_elements_by_class_name(mode)
-        if target == True:
+        if target == True and lnew != lold:
+            print(cmnd)
             lold = len(cmnd)
+            print(lold)
             clean = decoded(cmnd[-1])
-            if clean.lower() != phase.lower():
+            print(clean)
+            if clean[0].lower() != phase.lower():
                     continue
-            execute(clean)
+            execute(clean[1:-2])
             target = False
             lnew=lold
             continue
