@@ -2,7 +2,7 @@
 A simple assistant for Whatsapp
 
 ## Usage
-Clone repo, chromedriver should be in the same folder. Only requirement is selenium. Install it with pip. Open your whatsapp and make a new group named "Sirius".
+Clone repo, chromedriver should be in the same folder (Download appropriate version from [here](https://chromedriver.chromium.org/downloads)). Only requirement is selenium. Install it with pip. Open your whatsapp and make a new group named "Sirius".
 Alternatively, in the script change 'name' to any group or contact name you already have in your phone.  
 Use as follows : Sirius command parameters.  
 To change the invocation, set phrase to whatever you want. Please not as of now most things are case sensitive.
