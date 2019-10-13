@@ -107,6 +107,14 @@ def execute(cmd):
             msg_box.send_keys('https://www.google.com/search?q='+removeSpaces(subject)+Keys.RETURN)
         else:
             msg_box.send_keys("No doors to open!"+Keys.RETURN)
+
+    elif cmd[0] == 'urban':
+        if(len(cmd)>1):
+            subject = ' '.join(cmd[1:])
+            search = urban_dict(removeSpaces(subject))
+            msg_box.send_keys(search+Keys.RETURN)
+        else:
+            msg_box.send_keys("Hear, Hear!"+Keys.RETURN)
     
     elif cmd[0] == 'youtube' or cmd[0] == 'accio':
         if(len(cmd)>1):
@@ -129,6 +137,14 @@ def youtube(subject):
     link = vid.get_attribute('href')
     d.close()
     return link
+
+def urban_dict(query):
+    d = webdriver.Chrome()
+    d.get('https://www.urbandictionary.com/define.php?term='+removeSpaces(query))
+    meaning = d.find_element_by_class_name('meaning').text
+    d.close()
+    return meaning
+
 
 def spam(cmd):
     text = ' '.join(cmd[:-1])
