@@ -94,6 +94,7 @@ def execute(cmd):
             focus(name)
             if(cmd[2] == 'in'):
                 mode = 'message-in'
+                print(mode)
             else:
                 mode = 'message-out'
             msg_box.send_keys("Things just got a hell lot more interesting... "+Keys.RETURN)
@@ -115,7 +116,20 @@ def execute(cmd):
             msg_box.send_keys(search+Keys.RETURN)
         else:
             msg_box.send_keys("Hear, Hear!"+Keys.RETURN)
-
+    
+    elif cmd[0] == 'count':
+        i = 0
+        rec = driver.find_elements_by_class_name('message-in')
+        r_len = len(rec)
+        while(True):
+            rec_n = driver.find_elements_by_class_name('message-in')
+            r_nlen = len(rec_n)
+            if(r_nlen != r_len):
+                msg_box.send_keys(str(i) + Keys.RETURN)
+                i+=1
+                r_len = r_nlen
+        
+        
     elif cmd[0] == 'wiki':
         if(len(cmd)>1):
             subject = ''.join(cmd[1:])
