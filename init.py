@@ -115,6 +115,14 @@ def execute(cmd):
             msg_box.send_keys(search+Keys.RETURN)
         else:
             msg_box.send_keys("Hear, Hear!"+Keys.RETURN)
+
+    elif cmd[0] == 'wiki':
+        if(len(cmd)>1):
+            subject = ''.join(cmd[1:])
+            search = wiki(removeSpacesWiki(subject))
+            msg_box.send_keys(search+Keys.RETURN)
+        else:
+            msg_box.send_keys("Hear, Hear!"+Keys.RETURN)
     
     elif cmd[0] == 'youtube' or cmd[0] == 'accio':
         if(len(cmd)>1):
@@ -145,6 +153,17 @@ def urban_dict(query):
     d.close()
     return meaning
 
+def wiki(query):
+    d = webdriver.Chrome()
+    d.get('https://en.wikipedia.org/wiki/'+removeSpacesWiki(query))
+    meaning = d.find_elements_by_tag_name('p')
+
+    definition = ""
+    for text in meaning[:4]:
+        definition += text.text
+    d.close()
+    return definition
+
 
 def spam(cmd):
     text = ' '.join(cmd[:-1])
@@ -154,7 +173,13 @@ def decoded(c):
     return c.text.split()
 
 def removeSpaces(s):
-    return s.replace(" ",'+')       
+    return s.replace(" ",'+')
+
+def removeSpacesWiki(s):
+    """
+    Wikipedia uses underscores instead of '+' on their links
+    """
+    return s.replace(" ",'_')    
 
 def focus(name):
     global search
