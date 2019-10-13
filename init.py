@@ -9,7 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-driver = webdriver.Chrome('./chromedriver')
+driver = webdriver.Chrome()
 driver.get('https://web.whatsapp.com/')
 
 name = 'Sirius'
