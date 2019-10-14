@@ -40,6 +40,10 @@ Usage: Sirius snape <name> in/out
 Gets the meaning of a query from Urban Dictionary
 Usage: Sirius urban <query>
   
-#### 8. wiki
+#### 9. wiki
 Gets the definition from wikipedia via query
 Usage: Sirius wiki <query>
+
+#### 10. cantis / soundcloud
+Gets the song link from soundlcoud
+Usage: Sirius cantis <query>
