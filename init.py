@@ -134,6 +134,16 @@ def execute(cmd):
         else:
             msg_box.send_keys("Concentrate harder on the object!"+Keys.RETURN)
     
+    elif cmd[0] == 'soundcloud' or cmd[0] == 'cantis':
+        if(len(cmd)>1):
+            subject = ' '.join(cmd[1:])
+            link = soundcloud(subject)
+            msg_box.send_keys(link)
+#            time.sleep(2)
+            msg_box.send_keys(Keys.ENTER)
+        else:
+            msg_box.send_keys("Concentrate harder on the object!"+Keys.RETURN)
+    
     else:
         msg_box.send_keys('Wrong Incantation'+Keys.RETURN)
   
@@ -142,6 +152,14 @@ def youtube(subject):
     d = webdriver.Chrome()    
     d.get('https://www.youtube.com/results?search_query='+removeSpaces(subject))
     vid = d.find_element_by_id('video-title')
+    link = vid.get_attribute('href')
+    d.close()
+    return link
+
+def soundcloud(subject):
+    d = webdriver.Chrome()    
+    d.get('https://www.soundcloud.com/search?q='+removeSpaces(subject))
+    vid =  d.find_elements_by_class_name('soundTitle__title')[1]
     link = vid.get_attribute('href')
     d.close()
     return link
