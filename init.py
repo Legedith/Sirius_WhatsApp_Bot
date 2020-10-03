@@ -17,7 +17,7 @@ phase = 'Sirius'
 input('Scan QR code and press y once the screen has stopped loading: ')
 time.sleep(5)
 search_box = '_3FRCZ'
-message_box = '_2FVVk'
+message_box = '_3uMse'
 
 search = driver.find_element_by_class_name(search_box)
 search.click()
@@ -215,6 +215,6 @@ if __name__ == "__main__":
         try:
             main()
         except:
-            print('got an error here!'+ Exception)
+            print('got an error here!') #+ Exception
         
         
