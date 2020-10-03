@@ -16,15 +16,17 @@ name = 'Sirius'
 phase = 'Sirius'
 input('Scan QR code and press y once the screen has stopped loading: ')
 time.sleep(5)
+search_box = '_3FRCZ'
+message_box = '_2FVVk'
 
-search = driver.find_element_by_class_name('_2zCfw')
+search = driver.find_element_by_class_name(search_box)
 search.click()
 search.send_keys(name)
 search.send_keys(Keys.RETURN)
 
 target = False
 
-msg_box = driver.find_element_by_class_name('_3u328')
+msg_box = driver.find_element_by_class_name(message_box)
 mode = "message-out"
 def main():
     global target
@@ -202,17 +204,17 @@ def removeSpacesWiki(s):
 def focus(name):
     global search
     global msg_box
-    search = driver.find_element_by_class_name('_2zCfw')
+    search = driver.find_element_by_class_name(search_box)
     search.click()
     search.send_keys(name)
     search.send_keys(Keys.RETURN)
-    msg_box = driver.find_element_by_class_name('_3u328')
+    msg_box = driver.find_element_by_class_name(message_box)
 
 if __name__ == "__main__":
     while True:
         try:
             main()
         except:
-            print('got an error here!')
+            print('got an error here!'+ Exception)
         
         
