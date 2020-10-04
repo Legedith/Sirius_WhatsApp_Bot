@@ -8,6 +8,7 @@ Created on Sat Dec  1 19:58:56 2018
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import random
 
 driver = webdriver.Chrome()
 driver.get('https://web.whatsapp.com/')
@@ -145,6 +146,10 @@ def execute(cmd):
             msg_box.send_keys(Keys.ENTER)
         else:
             msg_box.send_keys("Concentrate harder on the object!"+Keys.RETURN)
+
+    elif cmd[0] == 'response':
+        msg_box.send_keys(random_response())
+        msg_box.send_keys(Keys.ENTER)
     
     else:
         msg_box.send_keys('Wrong Incantation'+Keys.RETURN)
@@ -209,6 +214,10 @@ def focus(name):
     search.send_keys(name)
     search.send_keys(Keys.RETURN)
     msg_box = driver.find_element_by_class_name(message_box)
+
+def random_response():
+    responses = ["Okay", "OK", "Okk", "Ohk", "lol", "Nice", "Hmm", "Noice", "Maybe", "No", "Yes", "Yeah"]
+    return random.choice(responses)
 
 if __name__ == "__main__":
     while True:
