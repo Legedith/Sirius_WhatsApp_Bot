@@ -26,13 +26,16 @@ search.send_keys(name)
 search.send_keys(Keys.RETURN)
 
 target = False
+random_response = False
 
 msg_box = driver.find_element_by_class_name(message_box)
 mode = "message-out"
 def main():
     global target
+    global random_response
     cmnd = driver.find_elements_by_class_name(mode)
     lold = len(cmnd)
+    lold_in = len(driver.find_elements_by_class_name("message-in"))
     while True:
         cmnd = driver.find_elements_by_class_name(mode)
         if target == True:
@@ -56,11 +59,20 @@ def main():
                 execute(clean[1:-2])
             lold=lnew
 
+        if random_response:
+            lnew_in = len(driver.find_elements_by_class_name("message-in"))
+            if (lold_in and lold_in < lnew_in):
+                msg_box.send_keys(random_response_gen())
+                msg_box.send_keys(Keys.ENTER)
+            lold_in = lnew_in
+
+
 def execute(cmd):
     global name
     global phase
     global mode
     global target
+    global random_response
     if cmd[0] == 'spam' or cmd[0] == 'crucio':
         if(len(cmd) > 2):
             spam(cmd[1:])
@@ -92,10 +104,10 @@ def execute(cmd):
     
     elif cmd[0] == 'mode' or cmd[0] == 'snape':
         target = True
-        if(len(cmd)>2):
+        if(len(cmd)>1):
             name = cmd[1]
             focus(name)
-            if(cmd[2] == 'in'):
+            if(cmd[1] == 'in'):
                 mode = 'message-in'
             else:
                 mode = 'message-out'
@@ -148,8 +160,9 @@ def execute(cmd):
             msg_box.send_keys("Concentrate harder on the object!"+Keys.RETURN)
 
     elif cmd[0] == 'response':
-        msg_box.send_keys(random_response())
-        msg_box.send_keys(Keys.ENTER)
+        random_response = True
+        if cmd[-1] == 'stop':
+            random_response = False
     
     else:
         msg_box.send_keys('Wrong Incantation'+Keys.RETURN)
@@ -215,8 +228,8 @@ def focus(name):
     search.send_keys(Keys.RETURN)
     msg_box = driver.find_element_by_class_name(message_box)
 
-def random_response():
-    responses = ["Okay", "OK", "Okk", "Ohk", "lol", "Nice", "Hmm", "Noice", "Maybe", "No", "Yes", "Yeah"]
+def random_response_gen():
+    responses = ["Okay", "OK", "Okk", "Ohk", "lol", "Nice", "Hmmm", "Noice", "Maybe", "No", "Yes", "Yeah", "No way", "Sweet"]
     return random.choice(responses)
 
 if __name__ == "__main__":
