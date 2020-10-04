@@ -161,7 +161,7 @@ def execute(cmd):
 
     elif cmd[0] == 'response':
         random_response = True
-        if cmd[-1] == 'stop':
+        if len(cmd) > 1 and cmd[1] == 'stop':
             random_response = False
     
     else:
