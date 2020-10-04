@@ -47,3 +47,7 @@ Usage: Sirius wiki <query>
 #### 10. cantis / soundcloud
 Gets the song link from soundlcoud
 Usage: Sirius cantis <query>
+
+#### 11. response
+Generate random responses
+Usage: Sirius response / Sirius response stop
