@@ -187,7 +187,8 @@ def soundcloud(subject):
 def urban_dict(query):
     d = webdriver.Chrome()
     d.get('https://www.urbandictionary.com/define.php?term='+removeSpaces(query))
-    meaning = d.find_element_by_class_name('meaning').text
+    meanings = d.find_elements_by_class_name('meaning')
+    meaning  = ' '.join([meaning.text for meaning in meanings])
     d.close()
     return meaning
 
